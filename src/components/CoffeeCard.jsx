@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import PropTypes from 'prop-types';
 
 const CoffeeCard = ({ coffee, coffees, setCoffees}) => {
     // console.log(coffee);
@@ -27,7 +27,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees}) => {
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your coffee has been deleted.",
                                 icon: "success"
                             });
                             const remains = coffees.filter(cof=> cof._id !== _id);
@@ -64,5 +64,9 @@ const CoffeeCard = ({ coffee, coffees, setCoffees}) => {
         </div>
     );
 };
-
+CoffeeCard.propTypes ={
+    coffee: PropTypes.object,
+    coffees: PropTypes.array,
+    setCoffees: PropTypes.func,
+}
 export default CoffeeCard;
